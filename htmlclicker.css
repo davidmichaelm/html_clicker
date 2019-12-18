@@ -1,6 +1,6 @@
 body {
     font-family: Menlo, monospace;
-    color: #707070;
+    color: #444444;
 }
 
 h1, h2, h3 {
@@ -20,7 +20,7 @@ header h1 {
     font-size: 2em;
 }
 
-#clickerHeader p {
+header p {
     margin-top: 5px;
     font-size: .75em;
 }
@@ -80,7 +80,7 @@ input[type=button] {
 }
 
 input[type=button] {
-    background-color: #707070;
+    background-color: gray;
     color: white;
     border: none;
     border-radius: 33px;
@@ -121,6 +121,7 @@ input[type=button] {
 .store h2, #clickers h2 {
     text-align: center;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .store {
@@ -161,7 +162,7 @@ input[type=button] {
 }
 
 .button:active {
-    background-color: #707070;
+    background-color: #444444;
 }
 
 
