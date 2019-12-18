@@ -1,0 +1,203 @@
+body {
+    font-family: Menlo, monospace;
+    color: #707070;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+}
+
+#clickerHeader p {
+    margin-top: 5px;
+    font-size: .75em;
+}
+
+/* Main layout */
+#clickerMain {
+    background-color: lightgray;
+    border-radius: 33px;
+    padding: 20px;
+    font-size: .75em;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sidebar {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Clicker buttons */
+#clickers {
+    min-width: 100px;
+}
+
+#tagCloseButton, #tagOpenButton {
+    display: inline-block;
+    width: 4em;
+    text-align: center;
+    margin: 10px;
+}
+
+#openTags, #closeTags {
+    font-size: 1.25em;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* CSS module */
+#css {
+    display: none;
+    margin-top: 25px;
+    text-align: center;
+}
+
+#cssNextRule {
+    background-color: gray;
+    color: white;
+}
+
+input[type=button] {
+    font-family: Menlo, monospace;
+}
+
+input[type=button] {
+    background-color: #707070;
+    color: white;
+    border: none;
+    border-radius: 33px;
+    padding: 5px 7.5px 5px 7.5px;
+}
+
+/* Player's stats */
+#inventory {
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 15px;
+}
+
+/* Ads module */
+#ads {
+    text-align: center;
+    width: 300px;
+    margin-top: 25px;
+}
+
+#adsMain, #adsStyleButton {
+    display: none;
+}
+
+#adsMain div {
+    margin: 5px;
+}
+
+
+/* HTML, CSS, JS Stores */
+#stores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.store h2, #clickers h2 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.store {
+    padding: 0 10px 0 10px;
+    max-width: 250px;
+}
+
+.storeItem {
+    margin: 10px;
+}
+
+.upgradeButton {
+    text-align: center;
+}
+
+#cssStore, #jsStore {
+    display: none;
+}
+
+
+/* Buttons used throughout the game */
+.button {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.button:hover {
+    background-color: black;
+}
+
+.button:active {
+    background-color: #707070;
+}
+
+
+
+/*
+    Different layout for different screens
+    Makes a sidebar in tablet and desktop view
+*/
+@media only screen and (min-width: 600px) {
+    #stores {
+        max-width: 250px;
+    }
+
+    #clickerMain {
+        margin: 0 auto 0 auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #clickerMain {
+        width: max-content;
+        max-width: 90%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #stores {
+        max-width: 475px;
+    }
+}
+
+@media only screen and (min-width: 1224px) {
+    #stores {
+        max-width: initial;
+    }
+}

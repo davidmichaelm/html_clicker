@@ -1,0 +1,151 @@
+[
+  {
+    "name": "<H1>",
+    "type": "html",
+    "cost": 10,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 1
+    },
+    "owned": 0
+  },
+  {
+    "name": "<DIV>",
+    "type": "html",
+    "cost": 100,
+    "costType": "htmls",
+    "properties":{
+      "htmlsPerSecond": 5
+    },
+    "owned": 0
+  },
+  {
+    "name": "HTML5",
+    "type": "html",
+    "cost": 3500,
+    "costType": "htmls",
+    "majorUpgrade": {
+      "description": "Lowercase tag names"
+    }
+  },
+  {
+    "name": "<IMG>",
+    "type": "html",
+    "cost": 1000,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 25
+    },
+    "owned": 0
+  },
+  {
+    "name": "<P>",
+    "type": "html",
+    "cost": 10000,
+    "costType": "htmls",
+    "properties":{
+      "htmlsPerSecond": 100
+    },
+    "owned": 0
+  },
+  {
+    "name": "CSS",
+    "type": "css",
+    "cost": 50,
+    "costType": "clicks",
+    "majorUpgrade": {
+      "description": "Upgrade rendering engine"
+    }
+  },
+  {
+    "name": "background-color",
+    "type": "css",
+    "cost": 3,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 0.5
+    },
+    "owned": 0
+  },
+
+  {
+    "name": "font-family",
+    "type": "css",
+    "cost": 90,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 3
+    },
+    "owned": 0
+  },
+  {
+    "name": "text-align",
+    "type": "css",
+    "cost": 270,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 9
+    },
+    "owned": 0
+  },
+  {
+    "name": "border",
+    "type": "css",
+    "cost": 8100,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 27
+    },
+    "owned": 0
+  },
+  {
+    "name": "Javascript",
+    "type": "js",
+    "cost": 250,
+    "costType": "clicks",
+    "majorUpgrade": {
+      "description": "Generate clicks programatically"
+    }
+  },
+  {
+    "name": "var",
+    "type": "js",
+    "cost": 25,
+    "costType": "htmls",
+    "properties": {
+      "clicksPerSecond": 25
+    },
+    "owned": 0
+  },
+  {
+    "name": "if statement",
+    "type": "js",
+    "cost": 250,
+    "costType": "htmls",
+    "properties": {
+      "clicksPerSecond": 100
+    },
+    "owned": 0
+  },
+
+  {
+    "name": "for loop",
+    "type": "js",
+    "cost": 2500,
+    "costType": "htmls",
+    "properties": {
+      "clicksPerSecond": 400
+    },
+    "owned": 0
+  },
+  {
+    "name": "function",
+    "type": "js",
+    "cost": 25000,
+    "costType": "htmls",
+    "properties": {
+      "clicksPerSecond": 1600
+    },
+    "owned": 0
+  }
+]

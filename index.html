@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- SEO: Descriptive title -->
+        <title>Ode to HTML - HTML Clicker: Build a website. Get lots of clicks.</title>
+        <!-- SEO: Unique meta description -->
+        <meta name="description" content="A game which inaccurately simulates the work of a web developer.">
+        <link rel="stylesheet" href="htmlclicker.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+    <body>
+        <header>
+            <h1>HTML Clicker</h1>
+            <p>Build a website. Get lots of clicks.</p>
+        </header>
+        <main id="clickerMain">
+
+            <div id="sidebar">
+                <div id="clickers">
+                    <h2>Clickers</h2>
+                    <div id="tagOpenButton" class="button">&lt;&gt;</div> <span id="openTags">0</span><br>
+                    <div id="tagCloseButton" class="button">&lt;/&gt;</div> <span id="closeTags">0</span>
+                </div>
+
+                <div id="css">
+                    <p>
+                        Type this to get style: <span id="cssNextRule"></span>
+                    </p>
+                        <input type="text" id="cssInput" autocapitalize="off" autocomplete="off" spellcheck="false"> <input type="button" id="cssButton" value="Submit">
+
+                </div>
+                <br>
+                <div id="inventory">
+                    <div><span id="htmls">0</span> htmls <span id="htmlsPerSecond"></span></div>
+                    <div><span id="tagsPerClick">1</span> &lt;&gt; or &lt;/&gt; per click</div>
+                    <div class="css"><span id="style">0</span> style <span id="stylePerSecond"></span></div>
+                    <div><span id="clicks">0</span> clicks on your website <span id="clicksPerSecond"></span></div>
+                </div>
+                <br>
+                <div id="ads">
+                    <div id="unlockAdsButton" class="button">Unlock ads for your site: 100 htmls</div>
+                    <div id="adsMain">
+                        <div id="adsHtmlButton" class="button">Sell <span id="adsHtml"></span> htmls for <span id="adsHtmlClicks"></span> clicks</div>
+                        <div id="adsStyleButton" class="button">Sell <span id="adsStyle"></span> style for <span id="adsStyleClicks"></span> clicks</div>
+                    </div>
+                </div>
+            </div>
+            <div id="stores">
+                <div id="htmlStore" class="store"></div>
+                <div id="cssStore" class="store"></div>
+                <div id="jsStore" class="store"></div>
+
+            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
