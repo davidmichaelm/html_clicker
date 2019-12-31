@@ -240,20 +240,15 @@ export class JsStore extends Store {
 
 // Translates property names into English
 function translateProperty(prop) {
-    switch (prop) {
-        case "htmlsPerSecond":
-            return "htmls per second";
-        case "clicksPerSecond":
-            return "clicks per second";
-        case "stylePerSecond":
-            return "style per second";
-        case "tagsPerClick":
-            return "<> or &lt;/&gt; per click";
-        case "stylePerClick":
-            return "style per property entered";
-        case "clicksPerAd":
-            return "clicks per ad sold";
-        default:
-            return prop;
-    }
+    const translation = {
+        "htmlsPerSecond": "htmls per second",
+        "clicksPerSecond": "clicks per sercond",
+        "stylePerSecond": "style per second",
+        "tagsPerClick":"<> or &lt;/&gt; per click",
+        "stylePerClick": "style per property entered",
+        "clicksPerAd": "clicks per ad sold",
+        normal: prop
+    };
+
+    return translation[prop] || translation.normal;
 }
