@@ -15,6 +15,9 @@ export class Store {
     // Loops through available items and displays them with their cost and properties
     showItems() {
         let store = $("#" + this.type + "Store");
+        if (!this.locked) {
+            store.show();
+        }
         store.html("<h2>" + this.type.toUpperCase() + " Store</h2>");
 
         this.availableItems.forEach((item) => {
@@ -46,7 +49,7 @@ export class Store {
         });
 
         // Show a button to unlock the next upgrade in the store if it's unlocked
-        if (!this.locked && this.futureItems.length > 0) {
+        if (this.locked === false && this.futureItems.length > 0) {
             let upgradeButton = $("<div class='upgradeButton button'>Unlock next upgrade:<br> " + this.toUnlockNextItem + " clicks</div>");
             upgradeButton.click($.proxy(this.unlockNextItem, this, false));
             store.append(upgradeButton);
@@ -83,9 +86,11 @@ export class Store {
             // Unlock the CSS store after unlocking the first html upgrade
             if (this.type === "html" && this.availableItems.length === 2) {
                 $("#cssStore").show();
+                //this.game.stores.find(store => store.type === "css").locked = false;
             } else if (this.type === "css" && this.availableItems.length >= 3) {
                 // And the JS store after the first CSS upgrade
                 $("#jsStore").show();
+                //this.game.stores.find(store => store.type === "js").locked = false;
             }
             this.showItems();
         }
@@ -113,6 +118,51 @@ export class Store {
         item.name = this.majorUpgradeString + ++this.majorUpgradeVersion;
 
         this.showItems();
+    }
+
+    save() {
+        localStorage.setItem(this.type + "availableItems", JSON.stringify(this.availableItems));
+        localStorage.setItem(this.type + "futureItems", JSON.stringify(this.futureItems));
+        for (let field in this) {
+            if (this.hasOwnProperty(field) && field !== "game" && field !== "type" && field !== "availableItems" && field !== "futureItems") {
+                localStorage.setItem(this.type + field, this[field]);
+            }
+        }
+    }
+
+    load() {
+        let availableItems = JSON.parse(localStorage.getItem(this.type + "availableItems"));
+        let futureItems = JSON.parse(localStorage.getItem(this.type + "futureItems"));
+
+        if (availableItems && futureItems) {
+            this.availableItems = availableItems;
+            this.futureItems = futureItems;
+        } else {
+            return false; // Didn't load anything
+        }
+
+        for (let field in this) {
+            let item = localStorage.getItem(this.type + field);
+            if (this.hasOwnProperty(field) && field !== "game" && field !== "type" && item && field !== "availableItems" && field !== "futureItems") {
+                this[field] = isNaN(Number(item)) ? item : Number(item);
+            }
+        }
+
+        this.locked = localStorage.getItem(this.type + "locked") === true;
+        this.showItems();
+    }
+
+    getStoreItems() {
+        $.ajaxSetup({cache: false}); // uncomment to change json files
+        $.getJSON(this.type + "store.json", (storeItems) => {
+            for (let item of storeItems) {
+                this.futureItems.push(item);
+            }
+
+            // Show only the first item
+            this.availableItems.push(this.futureItems.shift());
+            this.showItems();
+        });
     }
 }
 

@@ -60,7 +60,6 @@ export class Player {
 
         this.updateInventory(propList);
         return true;
-
     }
 
 
@@ -90,5 +89,27 @@ export class Player {
         this.addHtmls(this.htmlsPerSecond / 10);
         this.addStyle(this.stylePerSecond / 10);
         this.addClicks(this.clicksPerSecond / 10);
+    }
+
+    save() {
+        for (let field in this) {
+            if (this.hasOwnProperty(field)) {
+                localStorage.setItem(field, this[field]);
+            }
+        }
+    }
+
+    load() {
+        for (let field in this) {
+            if (this.hasOwnProperty(field)) {
+                let item = localStorage.getItem(field);
+                if (this.hasOwnProperty(field) && item) {
+                    this[field] = Number(item);
+                    if (this[field] > 0) {
+                        this.updateInventory([field]);
+                    }
+                }
+            }
+        }
     }
 }

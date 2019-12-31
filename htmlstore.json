@@ -1,0 +1,51 @@
+[
+  {
+    "name": "<H1>",
+    "type": "html",
+    "cost": 10,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 1
+    },
+    "owned": 0
+  },
+  {
+    "name": "<DIV>",
+    "type": "html",
+    "cost": 100,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 5
+    },
+    "owned": 0
+  },
+  {
+    "name": "HTML5",
+    "type": "html",
+    "cost": 3500,
+    "costType": "htmls",
+    "majorUpgrade": {
+      "description": "Lowercase tag names"
+    }
+  },
+  {
+    "name": "<IMG>",
+    "type": "html",
+    "cost": 1000,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 25
+    },
+    "owned": 0
+  },
+  {
+    "name": "<P>",
+    "type": "html",
+    "cost": 10000,
+    "costType": "htmls",
+    "properties": {
+      "htmlsPerSecond": 100
+    },
+    "owned": 0
+  }
+]

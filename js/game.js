@@ -28,7 +28,7 @@ export class Game {
         $("#unlockAdsButton").click($.proxy(this.ads.unlock, this.ads));
     }
 
-    populateStores() {
+    getStoreItems() {
         $.ajaxSetup({cache: false}); // uncomment to change json files
         $.getJSON("storeitems.json", (storeItems) => {
             for (let item of storeItems) {
@@ -74,13 +74,37 @@ export class Game {
             if (item.type === "css" && item.owned === 0) {
                 this.css.addPropFromItem(item);
             }
+            this[item.type + "Store"].save();
         }
+    }
+
+    loadAll() {
+        this.player.load();
+
+        this.stores.forEach((store) => {
+            if (store.load() === false) { // If we load something from localStorage, don't mess anymore with the store
+                store.getStoreItems();
+            }
+        });
+
+        this.css.load();
+        this.ads.load();
     }
 
     init() {
         this.createEventHandlers();
-        this.populateStores();
         this.getCssRules();
+        this.loadAll();
         setInterval(this.player.loop.bind(this.player), 100);
+
+        // Save automatically every 10 second
+        setInterval(() => {
+            this.player.save();
+            this.stores.forEach((store) => {
+                store.save();
+            });
+            this.css.save();
+            this.ads.save();
+        }, 10000);
     }
 }

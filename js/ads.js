@@ -11,21 +11,28 @@ export class Ads {
             clicks: 10
         };
 
+        this.unlocked = false;
+
         this.game = game;
     }
 
     // Pays a fee to open up the ability to buy ads
     unlock() {
         if (this.game.player.buyCheck(100, "htmls")) {
-            $("#unlockAdsButton").hide();
-            $("#adsMain").show();
-            this.update();
-
-            $("#adsHtmlButton").click($.proxy(this.sell, this, "htmls"));
-            $("#adsStyleButton").click($.proxy(this.sell, this, "style"));
+            this.show();
+            this.unlocked = true;
         } else {
             // error message
         }
+    }
+
+    show() {
+        $("#unlockAdsButton").hide();
+        $("#adsMain").show();
+        this.update();
+
+        $("#adsHtmlButton").click($.proxy(this.sell, this, "htmls"));
+        $("#adsStyleButton").click($.proxy(this.sell, this, "style"));
     }
 
     // Sells htmls or style in exchange for clicks
@@ -49,5 +56,21 @@ export class Ads {
         $("#adsHtmlClicks").text(this.htmls.clicks);
         $("#adsStyle").text(this.style.cost);
         $("#adsStyleClicks").text(this.style.clicks);
+    }
+
+    save() {
+        localStorage.setItem("adsHtmls", JSON.stringify(this.htmls));
+        localStorage.setItem("adsStyle", JSON.stringify(this.style));
+    }
+
+    load() {
+        let htmls = JSON.parse(localStorage.getItem("adsHtmls"));
+        let style = JSON.parse(localStorage.getItem("adsStyle"));
+
+        if (htmls && style) {
+            this.htmls = htmls;
+            this.style = style;
+            this.show();
+        }
     }
 }

@@ -34,4 +34,22 @@ export class CSS {
         let prop = this.futureCssRules.find(({property}) => property === item.name);
         this.availableCssRules.push(prop);
     }
+
+    save() {
+        localStorage.setItem("availableCssRules", JSON.stringify(this.availableCssRules));
+        localStorage.setItem("futureCssRules", JSON.stringify(this.futureCssRules));
+        localStorage.setItem("currentCssRule", this.currentCssRule);
+    }
+
+    load() {
+        let availableCssRules = JSON.parse(localStorage.getItem("availableCssRules"));
+        let futureCssRules = JSON.parse(localStorage.getItem("futureCssRules"));
+        let currentCssRule = localStorage.getItem("currentCssRule");
+
+        if (availableCssRules && futureCssRules && currentCssRule) {
+            this.availableCssRules = availableCssRules;
+            this.futureCssRules = futureCssRules;
+            this.currentCssRule = currentCssRule;
+        }
+    }
 }

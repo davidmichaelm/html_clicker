@@ -1,0 +1,51 @@
+[
+  {
+    "name": "CSS",
+    "type": "css",
+    "cost": 50,
+    "costType": "clicks",
+    "majorUpgrade": {
+      "description": "Upgrade rendering engine"
+    }
+  },
+  {
+    "name": "background-color",
+    "type": "css",
+    "cost": 3,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 0.5
+    },
+    "owned": 0
+  },
+  {
+    "name": "font-family",
+    "type": "css",
+    "cost": 90,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 3
+    },
+    "owned": 0
+  },
+  {
+    "name": "text-align",
+    "type": "css",
+    "cost": 270,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 9
+    },
+    "owned": 0
+  },
+  {
+    "name": "border",
+    "type": "css",
+    "cost": 8100,
+    "costType": "style",
+    "properties": {
+      "stylePerSecond": 27
+    },
+    "owned": 0
+  }
+]
