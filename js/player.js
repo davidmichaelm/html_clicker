@@ -10,6 +10,7 @@ export class Player {
         this.stylePerClick = 1;
         this.stylePerSecond = 0;
         this.clicksPerSecond = 0;
+        this.clicksPerAd = 10;
     }
 
     addSingleTag(type) {

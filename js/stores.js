@@ -111,7 +111,7 @@ export class Store {
             item.properties = {};
             cps = 50;
         } else {
-            cps = Math.floor(item.properties[type] *= 1.1);
+            cps = Math.floor(item.properties[type] * 1.1);
         }
         item.properties[type] = cps;
 
@@ -124,7 +124,7 @@ export class Store {
         localStorage.setItem(this.type + "availableItems", JSON.stringify(this.availableItems));
         localStorage.setItem(this.type + "futureItems", JSON.stringify(this.futureItems));
         for (let field in this) {
-            if (this.hasOwnProperty(field) && field !== "game" && field !== "type" && field !== "availableItems" && field !== "futureItems") {
+            if (this.hasOwnProperty(field) && field !== "game" && field != "ads" && field !== "type" && field !== "availableItems" && field !== "futureItems") {
                 localStorage.setItem(this.type + field, this[field]);
             }
         }
