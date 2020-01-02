@@ -148,8 +148,18 @@ export class Store {
             }
         }
 
-        this.locked = localStorage.getItem(this.type + "locked") === true;
+        this.locked = localStorage.getItem(this.type + "locked") === "true";
         this.showItems();
+    }
+
+    clearSave() {
+        localStorage.removeItem(this.type + "availableItems");
+        localStorage.removeItem(this.type + "futureItems");
+        for (let field in this) {
+            if (this.hasOwnProperty(field) && field !== "game" && field != "ads" && field !== "type" && field !== "availableItems" && field !== "futureItems") {
+                localStorage.removeItem(this.type + field);
+            }
+        }
     }
 
     getStoreItems() {

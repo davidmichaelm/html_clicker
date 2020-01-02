@@ -26,6 +26,7 @@ export class Game {
             }
         });
         $("#unlockAdsButton").click($.proxy(this.ads.unlock, this.ads));
+        $("#clearSave").click($.proxy(this.clearAllSaves, this));
     }
 
     getStoreItems() {
@@ -89,6 +90,15 @@ export class Game {
 
         this.css.load();
         this.ads.load();
+    }
+
+    clearAllSaves() {
+        this.player.clearSave();
+        this.stores.forEach((store) => {
+            store.clearSave();
+        });
+        this.css.clearSave();
+        this.ads.clearSave();
     }
 
     init() {

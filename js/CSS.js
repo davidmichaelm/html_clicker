@@ -52,4 +52,10 @@ export class CSS {
             this.currentCssRule = currentCssRule;
         }
     }
+
+    clearSave() {
+        localStorage.removeItem("availableCssRules");
+        localStorage.removeItem("futureCssRules");
+        localStorage.removeItem("currentCssRule");
+    }
 }

@@ -25,6 +25,24 @@ header p {
     font-size: .75em;
 }
 
+a {
+    color: lightgray;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+footer {
+    font-size: x-small;
+    margin: auto;
+    width: 100px;
+}
+
+
+
 /* Main layout */
 #clickerMain {
     background-color: lightgray;

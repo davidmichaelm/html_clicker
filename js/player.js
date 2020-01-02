@@ -113,4 +113,12 @@ export class Player {
             }
         }
     }
+
+    clearSave() {
+        for (let field in this) {
+            if (this.hasOwnProperty(field)) {
+                localStorage.removeItem(field);
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ export class Ads {
             clicks: 10
         };
 
-        this.unlocked = false;
+        this.locked = true;
 
         this.game = game;
     }
@@ -20,7 +20,7 @@ export class Ads {
     unlock() {
         if (this.game.player.buyCheck(100, "htmls")) {
             this.show();
-            this.unlocked = true;
+            this.locked = false;
         } else {
             // error message
         }
@@ -61,16 +61,23 @@ export class Ads {
     save() {
         localStorage.setItem("adsHtmls", JSON.stringify(this.htmls));
         localStorage.setItem("adsStyle", JSON.stringify(this.style));
+        localStorage.setItem("adsLocked", this.locked);
     }
 
     load() {
         let htmls = JSON.parse(localStorage.getItem("adsHtmls"));
         let style = JSON.parse(localStorage.getItem("adsStyle"));
+        let locked = localStorage.getItem("adsLocked") === "true";
 
-        if (htmls && style) {
+        if (htmls && style && locked === false) {
             this.htmls = htmls;
             this.style = style;
             this.show();
         }
+    }
+
+    clearSave() {
+        localStorage.removeItem("adsHtmls");
+        localStorage.removeItem("adsStyle");
     }
 }
