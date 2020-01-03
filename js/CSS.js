@@ -58,4 +58,8 @@ export class CSS {
         localStorage.removeItem("futureCssRules");
         localStorage.removeItem("currentCssRule");
     }
+
+    reset() {
+        $("#css").hide();
+    }
 }

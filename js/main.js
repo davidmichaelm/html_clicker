@@ -1,10 +1,7 @@
 import {Game} from "./game.js";
 
 $(function () {
-    const game = new Game();
-    game.init();
-    Cheats.game = game;
-    window.cheats = Cheats;
+    setUpGame();
 });
 
 const Cheats = {
@@ -22,3 +19,16 @@ const Cheats = {
         return "Cheater!";
     }
 };
+
+function setUpGame(game = null) {
+    if (game) {
+        game.reset();
+        game = null;
+    }
+
+    game = new Game();
+    Cheats.game = game;
+    window.cheats = Cheats;
+
+    $("#resetGame").click(() => setUpGame(game));
+}

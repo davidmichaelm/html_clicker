@@ -174,6 +174,12 @@ export class Store {
             this.showItems();
         });
     }
+
+    reset() {
+        if (this.type === "css" || this.type === "js") {
+           $("#" + this.type + "Store").hide();
+        }
+    }
 }
 
 export class HtmlStore extends Store {

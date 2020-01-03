@@ -12,6 +12,17 @@ export class Game {
         this.cssStore = new CssStore(this);
         this.jsStore = new JsStore(this, this.ads);
         this.stores = [this.htmlStore, this.cssStore, this.jsStore];
+        this.gameLoop;
+        this.saveLoop;
+
+        this.createEventHandlers();
+        this.getCssRules();
+        this.loadAll();
+
+        this.gameLoop = setInterval(this.player.loop.bind(this.player), 100);
+
+        // Save automatically every 10 seconds
+        this.saveLoop = setInterval(this.saveAll.bind(this), 10000);
     }
 
     createEventHandlers() {
@@ -26,7 +37,15 @@ export class Game {
             }
         });
         $("#unlockAdsButton").click($.proxy(this.ads.unlock, this.ads));
-        $("#clearSave").click($.proxy(this.clearAllSaves, this));
+    }
+
+    removeEventHandlers() {
+        $("#tagOpenButton").off();
+        $("#tagCloseButton").off();
+        $("#cssButton").off();
+        $("#cssInput").off();
+        $("#unlockAdsButton").off();
+        $("#clearSave").off();
     }
 
     getStoreItems() {
@@ -92,6 +111,15 @@ export class Game {
         this.ads.load();
     }
 
+    saveAll() {
+        this.player.save();
+        this.stores.forEach((store) => {
+            store.save();
+        });
+        this.css.save();
+        this.ads.save();
+    }
+
     clearAllSaves() {
         this.player.clearSave();
         this.stores.forEach((store) => {
@@ -101,20 +129,18 @@ export class Game {
         this.ads.clearSave();
     }
 
-    init() {
-        this.createEventHandlers();
-        this.getCssRules();
-        this.loadAll();
-        setInterval(this.player.loop.bind(this.player), 100);
+    reset() {
+        this.clearAllSaves();
+        clearInterval(this.gameLoop);
+        clearInterval(this.saveLoop);
 
-        // Save automatically every 10 second
-        setInterval(() => {
-            this.player.save();
-            this.stores.forEach((store) => {
-                store.save();
-            });
-            this.css.save();
-            this.ads.save();
-        }, 10000);
+        this.removeEventHandlers();
+
+        this.player.reset();
+        this.stores.forEach((store) => {
+            store.reset();
+        });
+        this.css.reset();
+        this.ads.reset();
     }
 }

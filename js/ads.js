@@ -79,5 +79,12 @@ export class Ads {
     clearSave() {
         localStorage.removeItem("adsHtmls");
         localStorage.removeItem("adsStyle");
+        localStorage.removeItem("adsLocked");
+    }
+
+    reset() {
+        $("#unlockAdsButton").show();
+        $("#adsMain").hide();
+        $("#adsStyleButton").hide();
     }
 }

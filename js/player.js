@@ -11,6 +11,8 @@ export class Player {
         this.stylePerSecond = 0;
         this.clicksPerSecond = 0;
         this.clicksPerAd = 10;
+
+        this.updateInventory(["openTags", "closeTags"]);
     }
 
     addSingleTag(type) {
@@ -120,5 +122,10 @@ export class Player {
                 localStorage.removeItem(field);
             }
         }
+    }
+
+    reset() {
+        $("#htmlsPerSecond").text("");
+        $("#clicksPerSecond").text("");
     }
 }
